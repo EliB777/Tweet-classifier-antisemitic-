@@ -30,8 +30,6 @@ class DataAnalyzer:
 
         return result
 
-    # def count_teets_by_category(self, data):
-    #     return data['Biased'].value_counts()
 
 
 
@@ -54,10 +52,7 @@ class DataAnalyzer:
 
 
 
-    #
-    # def avg_len_by_category(self, data):
-    #     data["average_length"] = data["Text"].apply(lambda x: len(str(x).split()))
-    #     return
+
 
     def top_3_long_tweets(self):
 
@@ -82,10 +77,6 @@ class DataAnalyzer:
         top_words_common = words.value_counts().head(10)
 
         return top_words_common.to_dict()
-
-    #
-    # def top_10_words_common(self, data):
-    #     return
 
 
 
@@ -118,6 +109,16 @@ class DataAnalyzer:
             "total": total
         }
 
+    def summary_analiza(self):
+        return {
+            "total_tweets": self.count_teets_by_category(),
+            "average_length": self.avg_len_by_category(),
+            "longest_3_tweets": self.top_3_long_tweets(),
+            "common_words": {
+                "total": list(self.top_10_words_common().keys())
+            },
+            "uppercase_words": self.sum_of_words_in_uppercase_letter()
+        }
 
 
 
